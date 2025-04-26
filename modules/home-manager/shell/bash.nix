@@ -58,11 +58,11 @@ in {
     };
     
     # Add helpful CLI tools that make Bash more useful
-    home.packages = with pkgs; [
-      bat       # Better cat
-      fd        # Better find
-      ripgrep   # Better grep
-      fzf       # Fuzzy finder
-    ];
+    # home.packages = with pkgs; [
+    #   bat       # Better cat
+    #   fd        # Better find
+    #   ripgrep   # Better grep
+    #   fzf       # Fuzzy finder
+    # ];
   };
 }
