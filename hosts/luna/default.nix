@@ -20,10 +20,7 @@
   networking.hostName = hostname;
   
 
-  # Basic bootloader configuration (customize as needed)
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
+  # Basic bootloader configuration
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
