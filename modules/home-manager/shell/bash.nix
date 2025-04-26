@@ -60,7 +60,6 @@ in {
     # Add helpful CLI tools that make Bash more useful
     home.packages = with pkgs; [
       bat       # Better cat
-      exa       # Better ls
       fd        # Better find
       ripgrep   # Better grep
       fzf       # Fuzzy finder
