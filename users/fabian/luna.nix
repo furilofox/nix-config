@@ -5,6 +5,26 @@
   imports = [
     ./default.nix  # Import common fabian config
   ];
+
+
+  # Gaming
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+    gamescopeSession.enable = true;
+  };
+
+  programs.gamemode.enable = true;
+
+  environment.sessionVariables = {
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\\\${HOME}/.steam/root/compatibilitytools.d";
+  };
   
   # Host-specific home-manager configuration for fabian
   home-manager.users.fabian = { pkgs, pkgs-unstable, lib, ... }: {
@@ -24,7 +44,6 @@
       # Unstable Packages
       (lib.custom.pkgsUnstable.pkgs [
         "brave"
-        "vscode"
         "vesktop" # Discord + Vencord
         "_1password-gui" # 1Password Desktop
         "nextcloud-client"

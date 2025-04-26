@@ -63,5 +63,13 @@
       userName = "fabian";
       userEmail = "fabian@example.com";
     };
+
+    custom.programs.vscode = {
+      enable = true;
+      extensions = [ "ms-python.python" ];
+      userSettings = {
+        "editor.formatOnSave" = true;
+      };
+    };
   };
 }
