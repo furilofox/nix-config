@@ -3,8 +3,8 @@
 
 {
   imports = [
-    ./shell
+    # ./shell
     # ./desktop
-    ./development
+    # ./development
   ];
 }

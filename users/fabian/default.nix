@@ -52,24 +52,24 @@
     ];
     
     # Default file associations and configuraations
-    xdg.enable = true;
-    xdg.configFile = {
-      # Add files to ~/.config/
-    };
+    # xdg.enable = true;
+    # xdg.configFile = {
+    #   # Add files to ~/.config/
+    # };
     
     # Configure git
-    programs.git = {
-      enable = true;
-      userName = "fabian";
-      userEmail = "fabian@example.com";
-    };
+    # programs.git = {
+    #   enable = true;
+    #   userName = "fabian";
+    #   userEmail = "fabian@example.com";
+    # };
 
-    custom.programs.vscode = {
-      enable = true;
-      extensions = [ "ms-python.python" ];
-      userSettings = {
-        "editor.formatOnSave" = true;
-      };
-    };
+    # custom.programs.vscode = {
+    #   enable = true;
+    #   extensions = [ "ms-python.python" ];
+    #   userSettings = {
+    #     "editor.formatOnSave" = true;
+    #   };
+    # };
   };
 }

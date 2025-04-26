@@ -42,24 +42,24 @@ in {
   };
 
   # Module implementation
-  config = mkIf cfg.enable {
-    programs.vscode = {
-      enable = true;
-      
-      # Use unstable if configured
-      package = if cfg.useUnstable
-        then pkgs-unstable.vscode
-        else pkgs.vscode;
-      
-      # Add extensions from options
-      extensions = (map 
-        (ext: if (cfg.useUnstable) 
-          then pkgs-unstable.vscode-extensions.${ext} or (throw "Extension ${ext} not found in nixpkgs-unstable")
-          else pkgs.vscode-extensions.${ext} or (throw "Extension ${ext} not found in nixpkgs"))
-        cfg.extensions);
-      
-      # User settings
-      userSettings = cfg.userSettings;
-    };
-  };
+  # config = mkIf cfg.enable {
+  #   programs.vscode = {
+  #     enable = true;
+  #     
+  #     # Use unstable if configured
+  #     package = if cfg.useUnstable
+  #       then pkgs-unstable.vscode
+  #       else pkgs.vscode;
+  #     
+  #     # Add extensions from options
+  #     extensions = (map 
+  #       (ext: if (cfg.useUnstable) 
+  #         then pkgs-unstable.vscode-extensions.${ext} or (throw "Extension ${ext} not found in nixpkgs-unstable")
+  #         else pkgs.vscode-extensions.${ext} or (throw "Extension ${ext} not found in nixpkgs"))
+  #       cfg.extensions);
+  #     
+  #     # User settings
+  #     userSettings = cfg.userSettings;
+  #   };
+  # };
 }

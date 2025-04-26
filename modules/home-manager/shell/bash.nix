@@ -47,14 +47,14 @@ in {
       shellAliases = cfg.aliases;
       
       # Basic configuration based on prompt style
-      initExtra = 
-        (if cfg.promptStyle == "minimal" then ''
-          PS1='\$ '
-        '' else if cfg.promptStyle == "informative" then ''
-          PS1='\u@\h:\w\$ '
-        '' else ''
-          PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-        '') + "\n" + cfg.extraConfig;
+      # initExtra = 
+      #   (if cfg.promptStyle == "minimal" then ''
+      #     PS1='\$ '
+      #   '' else if cfg.promptStyle == "informative" then ''
+      #     PS1='\u@\h:\w\$ '
+      #   '' else ''
+      #     PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+      #   '') + "\n" + cfg.extraConfig;
     };
     
     # Add helpful CLI tools that make Bash more useful
