@@ -4,7 +4,7 @@
 {
   imports = [
     ./system
-    ./desktop
+    # ./desktop
     ./services
   ];
 }
