@@ -42,7 +42,6 @@
     telegram-desktop
     obsidian
 
-    prismlauncher
     (prismlauncher.override {
       # Add binary required by some mod
       additionalPrograms = [ffmpeg];
