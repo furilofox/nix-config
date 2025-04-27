@@ -58,6 +58,12 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+
+              home-manager.extraSpecialArgs = { 
+                inherit inputs;
+                unstable = nixpkgsUnstableFor.x86_64-linux; # Pass the unstable attribute
+              };
+
               home-manager.users.fabian = import ./users/fabian;
             }
           ];

@@ -18,11 +18,11 @@
     
     # File managers
     xfce.thunar
-    gnome.nautilus
+    nautilus
     
     # System tools
-    gnome.gnome-system-monitor
-    gnome.gnome-control-center
+    gnome-system-monitor
+    gnome-control-center
     
     # Media
     mpv

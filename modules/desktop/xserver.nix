@@ -14,7 +14,7 @@
         wayland = true;
       };
       
-      defaultSession = "gnome";
+      
     };
     
     # Desktop environment
@@ -30,6 +30,8 @@
 
     videoDrivers = ["nvidia"];
   };
+
+  services.displayManager.defaultSession = "gnome";
   
   # Configure screen locker
   services.xserver.xautolock = {
