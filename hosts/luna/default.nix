@@ -9,32 +9,75 @@
     [ 
       # Include the results of the hardware scan
       ./hardware-configuration.nix
+
+
+      # Import modules
+      ../../modules/core
+      ../../modules/desktop
     ];
 
   # Bootloader configuration
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
 
   # Hostname
-  networking.hostName = "hostname1"; # Define your hostname
+  networking.hostName = "luna"; # Define your hostname
 
   # Network configuration
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/Berlin"; # Adjust to your time zone
+  # Locale
+  time.timeZone = "Europe/Berlin";
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "de_DE.UTF-8";
+    LC_IDENTIFICATION = "de_DE.UTF-8";
+    LC_MEASUREMENT = "de_DE.UTF-8";
+    LC_MONETARY = "de_DE.UTF-8";
+    LC_NAME = "de_DE.UTF-8";
+    LC_NUMERIC = "de_DE.UTF-8";
+    LC_PAPER = "de_DE.UTF-8";
+    LC_TELEPHONE = "de_DE.UTF-8";
+    LC_TIME = "de_DE.UTF-8";
+  };
+  console.keyMap = "de";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # Window Manager
+  services = {
+    xserver = {
+      enable = true;
+      desktopManager.gnome = {
+        enable = true;
+      };
+      displayManager.gdm = {
+        enable = true;
+        autoSuspend = false;
+      };
+      videoDrivers = ["nvidia"];
+      xkb = {
+        layout = "de";
+        variant = "";
+      };
+      # Force Wayland
+      displayManager.gdm.wayland = true;
+    };
+  };
 
-  # Enable the Desktop Environment (e.g., GNOME)
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # Force Wayland for other Apps
+  environment.sessionVariables = {
+    # Force Wayland for Chromium based applications
+    NIXOS_OZONE_WL = "1";
+    # Force Wayland for vscode
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+    # Force Wayland for firefox
+    MOZ_ENABLE_WAYLAND = 1;
+  };
 
-  # Define a user account
-  users.users.yourusername = {
+  # User
+  users.users.fabian = {
     isNormalUser = true;
-    description = "Your Name";
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
@@ -57,6 +100,26 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
+  # Gaming Stuff
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+    gamescopeSession.enable = true;
+  };
+
+  programs.gamemode.enable = true;
+
+  environment.sessionVariables = {
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\\\${HOME}/.steam/root/compatibilitytools.d";
+  };
+  
 
   # System version
   system.stateVersion = "24.11";

@@ -51,18 +51,14 @@
           };
           modules = [
             # Core system configuration
-            ./hosts/luna/configuration.nix
-            
-            # Import modules
-            ./modules/core
-            ./modules/desktop
+            ./hosts/luna/default.nix
             
             # Home Manager module
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.yourusername = import ./users/yourusername;
+              home-manager.users.fabian = import ./users/fabian;
             }
           ];
         };

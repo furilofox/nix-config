@@ -1,4 +1,3 @@
-# users/yourusername/default.nix
 # User-specific configuration for home-manager
 
 { config, pkgs, unstable, lib, ... }:

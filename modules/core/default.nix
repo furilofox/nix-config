@@ -8,5 +8,6 @@
     ./nix.nix
     ./users.nix
     ./networking.nix
+    ./formatting.nix
   ];
 }
