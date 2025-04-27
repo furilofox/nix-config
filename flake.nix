@@ -1,90 +1,99 @@
 {
-  description = "NixOS configuration";
+  description = "My NixOS Configuration";
 
   inputs = {
-    # Core nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    # Home manager for user configurations
+    # Stable NixOS 24.11
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    
+    # Unstable NixOS for newer packages
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    
+    # Home-manager for user configurations
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Useful for managing hardware configurations
-    hardware.url = "github:nixos/nixos-hardware";
   };
 
-  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
     let
-      system = "x86_64-linux"; # Set your system architecture here
-
-      # Helper function for easier access to unstable packages
-      mkPkgs = pkgs: overlays: import pkgs {
-        inherit system overlays;
-        config.allowUnfree = true; # Allow proprietary software
-      };
-
-      # Base packages set (stable)
-      pkgs = mkPkgs nixpkgs [ ];
-
-      # Unstable packages set
-      pkgs-unstable = mkPkgs nixpkgs-unstable [ ];
-
-      # Library functions
-      lib = nixpkgs.lib.extend (final: prev: {
-        custom = import ./lib {
-          inherit pkgs pkgs-unstable inputs system;
-          lib = final;
+      # System types to support
+      supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
+      
+      # Helper function to generate an attribute set for each supported system
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+      
+      # Import nixpkgs for each system with custom configuration
+      nixpkgsFor = forAllSystems (system: import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
         };
       });
-
-      # Create a NixOS system configuration for a host
-      mkHost = hostname: extraModules: lib.nixosSystem {
+      
+      # Import unstable nixpkgs for each system
+      nixpkgsUnstableFor = forAllSystems (system: import nixpkgs-unstable {
         inherit system;
-        specialArgs = {
-          inherit inputs system hostname pkgs pkgs-unstable lib;
+        config = {
+          allowUnfree = true;
         };
-        modules = [
-          # Basic host configuration
-          ./hosts/${hostname}
-
-          # Include home-manager as a NixOS module
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit inputs system hostname pkgs-unstable lib;
-            };
-          }
-
-          # Include our custom modules
-          ./modules/nixos
-
-        ] ++ extraModules;
-      };
-    in
-    {
+      });
+    in {
+      # Define NixOS configurations for your machines
       nixosConfigurations = {
-        # Define your hosts here
-        luna = mkHost "luna" [ ];
-        # Add more hosts as needed
-      };
-
-      # Development shell for working with this flake
-      devShells.${system}.default = pkgs.mkShell {
-        buildInputs = with pkgs; [
-          nixpkgs-fmt
-          nil
-        ];
-        shellHook = ''
-          echo "NixOS configuration development shell"
-          echo "Available commands:"
-          echo "  nixpkgs-fmt <file>  - Format Nix files"
-          echo "  nil <file>          - Nix language server"
-        '';
+        # First system - replace "luna" with your actual hostname
+        luna = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux"; # Replace with your system architecture if needed
+          specialArgs = { 
+            inherit inputs;
+            # Make unstable packages available as 'unstable' in configs
+            unstable = nixpkgsUnstableFor.x86_64-linux;
+          };
+          modules = [
+            # Core system configuration
+            ./hosts/luna/configuration.nix
+            
+            # Import modules
+            ./modules/core
+            ./modules/desktop
+            
+            # Home Manager module
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.yourusername = import ./users/yourusername;
+            }
+          ];
+        };
+        
+        # Second system - commented out as a template for future use
+        /*
+        hostname2 = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux"; # Replace with your system architecture if needed
+          specialArgs = { 
+            inherit inputs;
+            # Make unstable packages available as 'unstable' in configs
+            unstable = nixpkgsUnstableFor.x86_64-linux;
+          };
+          modules = [
+            # Core system configuration
+            ./hosts/hostname2/configuration.nix
+            
+            # Import modules
+            ./modules/core
+            ./modules/server # Different modules for different systems
+            
+            # Home Manager module
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.yourusername = import ./users/yourusername;
+            }
+          ];
+        };
+        */
       };
     };
 }
