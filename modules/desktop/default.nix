@@ -33,9 +33,8 @@
     # Clipboard
     xclip
   ];
-  
-  # Enable sound
-  sound.enable = true;
+
+  # Enable sound with pipewire
   hardware.pulseaudio.enable = false;
   
   # Enable PipeWire as the audio server

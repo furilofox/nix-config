@@ -25,6 +25,12 @@
   # Hostname
   networking.hostName = "luna"; # Define your hostname
 
+  # User
+  users.users.fabian = {
+    isNormalUser = true;
+    extraGroups = [ "networkmanager" "wheel" ];
+  };
+
   # Network configuration
   networking.networkmanager.enable = true;
 
@@ -54,12 +60,6 @@
     MOZ_ENABLE_WAYLAND = 1;
   };
 
-  # User
-  users.users.fabian = {
-    isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
-  };
-
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
     vim
@@ -68,17 +68,6 @@
     curl
     unstable.brave # Example of using unstable package
   ];
-
-  # Enable sound with pipewire
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 
   # Gaming Stuff
   programs.gamescope = {
