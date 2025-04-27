@@ -16,48 +16,13 @@
       ../../modules/desktop
     ];
 
-  # Bootloader configuration
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
-
-  # Hostname
+  # Hostname / Network
   networking.hostName = "luna"; # Define your hostname
 
   # User
   users.users.fabian = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
-  };
-
-  # Network configuration
-  networking.networkmanager.enable = true;
-
-  # Locale
-  time.timeZone = "Europe/Berlin";
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_DE.UTF-8";
-    LC_IDENTIFICATION = "de_DE.UTF-8";
-    LC_MEASUREMENT = "de_DE.UTF-8";
-    LC_MONETARY = "de_DE.UTF-8";
-    LC_NAME = "de_DE.UTF-8";
-    LC_NUMERIC = "de_DE.UTF-8";
-    LC_PAPER = "de_DE.UTF-8";
-    LC_TELEPHONE = "de_DE.UTF-8";
-    LC_TIME = "de_DE.UTF-8";
-  };
-  console.keyMap = "de";
-
-  # Force Wayland for other Apps
-  environment.sessionVariables = {
-    # Force Wayland for Chromium based applications
-    NIXOS_OZONE_WL = "1";
-    # Force Wayland for vscode
-    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
-    # Force Wayland for firefox
-    MOZ_ENABLE_WAYLAND = 1;
   };
 
   # List packages installed in system profile

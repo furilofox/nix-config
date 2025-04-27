@@ -42,4 +42,14 @@
     killtime = 20; # Turn off screen after 20 minutes
     killer = "${pkgs.systemd}/bin/systemctl suspend";
   };
+
+  # Force Wayland for other Apps
+  environment.sessionVariables = {
+    # Force Wayland for Chromium based applications
+    NIXOS_OZONE_WL = "1";
+    # Force Wayland for vscode
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+    # Force Wayland for firefox
+    MOZ_ENABLE_WAYLAND = 1;
+  };
 }

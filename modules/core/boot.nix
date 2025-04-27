@@ -1,0 +1,10 @@
+# 'nix fmt .' to format files
+
+{ config, lib, pkgs, ... }:
+
+{
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
+}
