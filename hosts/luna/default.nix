@@ -66,7 +66,6 @@
     wget
     git
     curl
-    unstable.brave # Example of using unstable package
   ];
 
   # Gaming Stuff
