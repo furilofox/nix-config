@@ -7,6 +7,7 @@
   imports = [
     ./xserver.nix
     ./fonts.nix
+    ./nvidia.nix
   ];
   
   # Common desktop packages
