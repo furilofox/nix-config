@@ -17,7 +17,7 @@
     ];
 
   # Hostname / Network
-  networking.hostName = "luna"; # Define your hostname
+  networking.hostName = "pandora"; # Define your hostname
 
   # User
   users.users.fabian = {

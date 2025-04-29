@@ -244,7 +244,7 @@
   ];
 
   networking = {
-    hostName = "luna";
+    hostName = "pandora";
     networkmanager = {
       enable = true;
     };
