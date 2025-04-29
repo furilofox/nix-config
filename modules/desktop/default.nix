@@ -30,13 +30,6 @@
     jack.enable = true;
   };
   
-  # Enable Bluetooth
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
-  services.blueman.enable = true;
-  
   # Enable printer support
   services.printing = {
     enable = true;
@@ -45,9 +38,4 @@
   services.avahi.enable = true;
   services.avahi.nssmdns4 = true;
   
-  # Enable scanner support
-  hardware.sane = {
-    enable = true;
-    extraBackends = [ pkgs.sane-airscan ];
-  };
 }
