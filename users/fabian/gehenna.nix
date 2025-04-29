@@ -9,18 +9,15 @@
 
   home.packages = with pkgs; [
     # Development
-    vscode
+    unstable.vscode
     git
     
     # Browser - using unstable channel
     unstable.brave
 
     # Unsorted
-    vim
     wget
     mission-center # Task / System Monitor
-    gnome-extension-manager
-    gparted
 
     gnome-tweaks
   ];
