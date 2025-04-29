@@ -12,27 +12,7 @@
   
   # Common desktop packages
   environment.systemPackages = with pkgs; [
-    # Terminal utilities
-    alacritty
-    kitty
-    
-    # File managers
-    xfce.thunar
-    nautilus
-    
-    # System tools
-    gnome-system-monitor
-    gnome-control-center
-    
-    # Media
-    mpv
-    vlc
-    
-    # Screenshot
-    flameshot
-    
-    # Clipboard
-    xclip
+
   ];
 
   # Enable sound with pipewire
