@@ -46,7 +46,7 @@
               unstable = nixpkgsUnstableFor.${system};
             };
 
-            home-manager.users.fabian = import ./users/fabian;
+            home-manager.users.fabian = import ./users/fabian/${hostname}.nix;
           }
         ];
       };
