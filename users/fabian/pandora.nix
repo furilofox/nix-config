@@ -12,20 +12,11 @@
     vscode
     git
     
-    # Tools
-    htop
-    ripgrep
-    fd
-    
     # Browser - using unstable channel
     unstable.brave
     
     # Communication
     vesktop
-    
-    # Media
-    vlc
-    mpv
 
     # Unsorted
     vim
