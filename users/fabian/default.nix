@@ -17,8 +17,8 @@
   # Configure Git
   programs.git = {
     enable = true;
-    userName = "Your Name";
-    userEmail = "fabian@example.com";
+    userName = "Furilo";
+    userEmail = "53122773+furilofox@users.noreply.github.com";
   };
 
   # Configure shell (e.g., zsh with oh-my-zsh)
