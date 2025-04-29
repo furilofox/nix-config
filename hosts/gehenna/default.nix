@@ -19,6 +19,10 @@
   # Hostname / Network
   networking.hostName = "gehenna"; # Define your hostname
 
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.useOSProber = true;
+
   # User
   users.users.fabian = {
     isNormalUser = true;

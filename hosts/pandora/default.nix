@@ -19,6 +19,11 @@
   # Hostname / Network
   networking.hostName = "pandora"; # Define your hostname
 
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
+
   # User
   users.users.fabian = {
     isNormalUser = true;

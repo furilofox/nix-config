@@ -8,7 +8,6 @@
     ./nix.nix
     ./networking.nix
     ./formatting.nix
-    ./boot.nix
     ./locale.nix
     
   ];
