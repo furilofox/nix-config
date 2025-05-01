@@ -25,7 +25,7 @@
     };
 
   fileSystems."/mnt/data" = 
-    { device = "/dev/disk/by-uuid/ec9e1f1e-267e-11f0-a7ed-2cf05d9ddbb8";
+    { device = "/dev/disk/by-uuid/a963cf58-aa73-40ac-a80f-2dda08352ce1";
       fsType = "ntfs"; # Or specify the exact fsType found with blkid
       options = [ "defaults" ]; # Common options, adjust as needed
     };
