@@ -36,8 +36,6 @@
     wget
     git
     curl
-
-    ntfs3g #for my ntfs partition
   ];
 
   # Gaming Stuff

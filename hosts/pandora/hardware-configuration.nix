@@ -24,12 +24,6 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/mnt/data" = 
-    { device = "/dev/disk/by-uuid/a963cf58-aa73-40ac-a80f-2dda08352ce1";
-      fsType = "ntfs"; # Or specify the exact fsType found with blkid
-      options = [ "defaults" ]; # Common options, adjust as needed
-    };
-
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
