@@ -18,10 +18,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "promethea"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fabian = {
@@ -29,6 +28,14 @@
     description = "Fabian";
     extraGroups = [ "networkmanager" "wheel" ];
   };
+
+  systemd.services.fprintd = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "simple";
+  };
+  services.fprintd.enable = true;
+  services.fprintd.tod.enable = true;
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
