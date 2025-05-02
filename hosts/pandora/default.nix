@@ -18,12 +18,7 @@
     ];
 
   # Hostname / Network
-  networking = {
-    hostname = "pandora";
-    networkmanager = {
-      enable = true;
-    };
-  };
+  networking.hostName = "pandora";
 
   boot.loader = {
     systemd-boot.enable = true;
