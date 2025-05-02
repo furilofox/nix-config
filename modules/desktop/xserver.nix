@@ -27,8 +27,6 @@
         layout = "de";
         variant = "";
     };
-
-    videoDrivers = ["nvidia"];
   };
 
   services.displayManager.defaultSession = "gnome";

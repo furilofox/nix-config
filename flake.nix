@@ -59,6 +59,12 @@
           system = "x86_64-linux";
         };
 
+        # Main Desktop
+        promethea = mkHost {
+          hostname = "promethea";
+          system = "x86_64-linux";
+        };
+
         # Test VM
         gehenna = mkHost {
           hostname = "gehenna";

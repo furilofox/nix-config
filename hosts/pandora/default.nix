@@ -14,6 +14,7 @@
       # Import modules
       ../../modules/core
       ../../modules/desktop
+      ../../modules/desktop/nvidia.nix
     ];
 
   # Hostname / Network
