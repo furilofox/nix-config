@@ -19,7 +19,7 @@
 
   # Hostname / Network
   networking = {
-    hostname = "pandora";
+    hostName = "pandora";
     networkmanager = {
       enable = true;
     };

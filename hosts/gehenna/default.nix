@@ -18,7 +18,7 @@
 
   # Hostname / Network
   networking = {
-    hostname = "gehenna";
+    hostName = "gehenna";
     networkmanager = {
       enable = true;
     };
