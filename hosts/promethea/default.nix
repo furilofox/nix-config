@@ -43,6 +43,8 @@
     };
   };
 
+  security.pam.services.gdm-password.enableGnomeKeyring = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
   security.pam.services.login.fprintAuth = false;
   security.pam.services.gdm-fingerprint = lib.mkIf (config.services.fprintd.enable) {
     text = ''
