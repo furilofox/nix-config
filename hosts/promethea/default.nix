@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, config, pkgs, ... }:
+{ config, pkgs, unstable, lib, ... }:
 
 {
   imports =
@@ -19,7 +19,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "promethea"; # Define your hostname.
-
+  
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
@@ -36,10 +36,10 @@
   };
   services.fprintd = {
     enable = true;
-    package = pkgs.fprintd-tod;
+    package = unstable.fprintd-tod;
     tod = {
       enable = true;
-        driver = pkgs.libfprint-2-tod1-goodix;
+        driver = unstable.libfprint-2-tod1-goodix;
     };
   };
 
