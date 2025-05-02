@@ -30,6 +30,10 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
+  # Gnome Network Display
+  networking.firewall.allowedTCPPorts = [ 7236 7250 ];
+  networking.firewall.allowedUDPPorts = [ 7236 5353 ];
+
   systemd.services.fprintd = {
     wantedBy = [ "multi-user.target" ];
     serviceConfig.Type = "simple";
