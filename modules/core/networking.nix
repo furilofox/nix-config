@@ -6,10 +6,6 @@
 {
   # Basic networking configuration
   networking = {
-    networkmanager = {
-      enable = true;
-    };
-    
     firewall = {
       enable = true;
       # Common services to allow
