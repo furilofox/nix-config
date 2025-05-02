@@ -17,7 +17,12 @@
     ];
 
   # Hostname / Network
-  networking.hostName = "gehenna"; # Define your hostname
+  networking = {
+    hostname = "gehenna";
+    networkmanager = {
+      enable = true;
+    };
+  };
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
