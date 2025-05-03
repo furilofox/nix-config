@@ -31,6 +31,7 @@
     obsidian
 
     gnome-tweaks
+    gnome-network-displays
   ];
 
   # Specify State Version (match your NixOS version)
