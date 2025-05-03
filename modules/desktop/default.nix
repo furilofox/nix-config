@@ -5,8 +5,7 @@
 
 {
   imports = [
-    ./xserver.nix
-    ./fonts.nix
+    ./wm/gnome.nix
   ];
   
   # Common desktop packages
