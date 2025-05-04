@@ -18,6 +18,15 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = unstable.linuxPackages_latest;
 
+  # Virtual RAM / RAM Compression and stuff
+  swapDevices = [
+    { device = "/var/lib/swapfile"; size = 16 * 1024; } # This creates an 8GB swap file
+  ];
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 10;
+  };
+  zramSwap.enable = true;
+
   # Getting Soundbar to work properly
   hardware.enableRedistributableFirmware = true;  
   environment.systemPackages = with pkgs; [
