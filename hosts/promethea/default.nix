@@ -16,7 +16,14 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = unstable.linuxPackages_latest;
+
+  # Getting Soundbar to work properly
+  hardware.enableRedistributableFirmware = true;  
+  environment.systemPackages = with pkgs; [
+    alsa-ucm-conf
+    pavucontrol
+  ];
 
   networking.hostName = "promethea"; # Define your hostname.
   
