@@ -20,7 +20,7 @@
 
   # Virtual RAM / RAM Compression and stuff
   swapDevices = [
-    { device = "/var/lib/swapfile"; size = 16 * 1024; } # This creates an 8GB swap file
+    { device = "/var/lib/swapfile"; size = 16 * 1024; }
   ];
   boot.kernel.sysctl = {
     "vm.swappiness" = 10;
@@ -32,6 +32,7 @@
   environment.systemPackages = with pkgs; [
     alsa-ucm-conf
     pavucontrol
+    alsa-utils.out
   ];
 
   networking.hostName = "promethea"; # Define your hostname.
