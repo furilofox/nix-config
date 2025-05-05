@@ -17,6 +17,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = unstable.linuxPackages_latest;
+  boot.kernelParams = [ "intel_pstate=active" ];
 
   # Virtual RAM / RAM Compression and stuff
   swapDevices = [
@@ -44,7 +45,7 @@
   users.users.fabian = {
     isNormalUser = true;
     description = "Fabian";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
   # Gnome Network Display
@@ -86,6 +87,9 @@
       session    optional                    ${pkgs.gnome-keyring}/lib/security/pam_gnome_keyring.so auto_start
       '';
     };
+
+
+  virtualisation.docker.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
