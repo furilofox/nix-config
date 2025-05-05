@@ -12,8 +12,8 @@
 
 
       # Import modules
-      ./common/core
-      ./common/desktop
+      ../common/core
+      ../common/desktop
     ];
 
   # Hostname / Network

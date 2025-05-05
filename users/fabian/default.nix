@@ -4,7 +4,7 @@
 
 {
   imports = [
-
+    ./common/global
   ];
 
   # Let Home Manager install and manage itself
