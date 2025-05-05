@@ -30,6 +30,8 @@
     telegram-desktop
     obsidian
 
+    protonup
+
     gnome-tweaks
     gnome-network-displays
   ];
