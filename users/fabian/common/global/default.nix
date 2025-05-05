@@ -7,5 +7,6 @@
   imports = [
     ./kdeconnect.nix
     ./git.nix
+    ./1password.nix
   ];
 }

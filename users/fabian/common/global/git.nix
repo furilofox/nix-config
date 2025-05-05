@@ -2,38 +2,61 @@
 
 { config, pkgs, unstable, lib, ... }:
 
+let
+  onePassPath = "~/.1password/agent.sock";
+in
 {
+  # Enable and configure the SSH program
+  programs.ssh = {
+    enable = true;
+    extraConfig = ''
+      Host *
+          IdentityAgent ${onePassPath}
+    '';
+  };
+
   # Configure Git
   programs.git = {
     enable = true;
-    userName = "Fabian";
+    userName = "Furilo";
+    userEmail = "late.book0382@furilofox.dev";
+
+    extraConfig = {
+      core = {
+        sshCommand = "ssh -i ~/.ssh/github-personal.pub";
+      };
+    };
+
+    includes = [
+      {
+        contents = {
+          user = {
+            name = "Fabian";
+            email = "b3-github@fabianweiss.dev";
+          };
+
+          # This conditional sshCommand will be used for repositories
+          # matching the condition, potentially overriding the IdentityAgent
+          # for those specific operations.
+          core = {
+            sshCommand = "ssh -i ~/.ssh/github-school.pub";
+          };
+        };
+
+        condition = "hasconfig:remote.*.url:git@github.com:IF11B-2024-25/*";
+      }
+    ];
   };
 
-  programs.ssh = {
-    enable = true;
-    matchBlocks = {
-      "github.com-personal" = {
-        hostname = "github.com";
-        user = "git";
-        # Specify the public key associated with your personal account in 1Password.
-        # You can get the public key from the SSH key item in 1Password.
-        identityFile = "../keys/github-personal.pub"; # Path to your *public* key file
-        extraOptions = {
-          IdentitiesOnly = "yes";
-          IdentityAgent = "~/.1password/agent.sock"; # Use the 1Password agent for this host
-        };
-      };
-      "github.com-school" = {
-        hostname = "github.com";
-        user = "git";
-        # Specify the public key associated with your work account in 1Password.
-        identityFile = "../keys/github-school.pub"; # Path to your *public* key file
-        extraOptions = {
-          IdentitiesOnly = "yes";
-          IdentityAgent = "~/.1password/agent.sock"; # Use the 1Password agent for this host
-        };
-      };
-      # Add more blocks for additional accounts
-    };
+  home.file."ssh-key-link-personal" = {
+    target = ".ssh/github-personal.pub";
+    source = ./../keys/github-personal.pub;
   };
+
+  home.file."ssh-key-link-school" = {
+    target = ".ssh/github-school.pub";
+    source = ./../keys/github-school.pub;
+  };
+
+  # Other home-manager configurations...
 }

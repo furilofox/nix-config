@@ -6,7 +6,6 @@
 {
   imports = [
     ./wm/gnome.nix
-    ./1password.nix
   ];
 
   # Common desktop packages
