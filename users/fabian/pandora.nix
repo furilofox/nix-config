@@ -26,7 +26,6 @@
     lutris # great game launcher
     heroic # good for epicgames
     bottles # windows app container
-    unstable._1password-gui # 1Password Desktop
     mission-center # Task / System Monitor
     gnome-extension-manager
     gparted
