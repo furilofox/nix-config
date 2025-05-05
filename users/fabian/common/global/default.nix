@@ -6,5 +6,6 @@
 {
   imports = [
     ./kdeconnect.nix
+    ./git.nix
   ];
 }
