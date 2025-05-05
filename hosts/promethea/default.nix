@@ -9,8 +9,8 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
 
-      ../../modules/core
-      ../../modules/desktop
+      ./common/core
+      ./common/desktop
     ];
 
   # Bootloader.
