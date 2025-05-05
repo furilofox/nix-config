@@ -16,5 +16,15 @@ in
       Host *
           IdentityAgent ${onePassPath}
     '';
+    matchBlocks = {
+      "github.com" = {
+        hostname = "github.com";
+        user = "Furilo";
+      };
+      "github-school" = {
+        hostname = "github.com";
+        user = "Fabian";
+      };
+    };
   };
 }
