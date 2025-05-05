@@ -7,20 +7,22 @@
   nix = {
     # Enable flakes and new 'nix' command
     package = pkgs.nixVersions.stable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
 
     # Garbage collection settings
     gc = {
       automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 30d";
+      dates = "daily"; # TODO: Set to weekly after im done setting everything up fully
+      options = "--delete-older-than +5";
     };
 
     # Optimize store
     settings = {
       auto-optimise-store = true;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "ca-derivations"
+      ];
       trusted-users = [ "root" "@wheel" ];
     };
   };
