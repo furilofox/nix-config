@@ -2,28 +2,27 @@
 
 { config, pkgs, unstable, lib, ... }:
 
-let
-  onePassPath = "~/.1password/agent.sock";
-in
-{
-  # Enable and configure the SSH program
-  programs.ssh = {
-    enable = true;
-    extraConfig = ''
-      Host *
-          IdentityAgent ${onePassPath}
-    '';
-  };
 
+{
   # Configure Git
   programs.git = {
     enable = true;
-    userName = "Furilo";
-    userEmail = "late.book0382@furilofox.dev";
 
     extraConfig = {
-      core = {
-        sshCommand = "ssh -i ~/.ssh/github-personal.pub";
+      gpg = {
+        format = "ssh";
+      };
+      "gpg \"ssh\"" = {
+        program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
+      };
+      commit = {
+        gpgsign = true;
+      };
+
+      user = {
+        name = "Furilo";
+        email = "late.book0382@furilofox.dev";
+        signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID/OqDv8cbzLzx983fHgAupPVy15LKEmVmUR9bOc7GlU";
       };
     };
 
@@ -33,13 +32,7 @@ in
           user = {
             name = "Fabian";
             email = "b3-github@fabianweiss.dev";
-          };
-
-          # This conditional sshCommand will be used for repositories
-          # matching the condition, potentially overriding the IdentityAgent
-          # for those specific operations.
-          core = {
-            sshCommand = "ssh -i ~/.ssh/github-school.pub";
+            signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHl9ziWvbM7DPxSN6CJE9ok3AAoj1S3F3xnwicIZ1tH/";
           };
         };
 
@@ -47,16 +40,4 @@ in
       }
     ];
   };
-
-  home.file."ssh-key-link-personal" = {
-    target = ".ssh/github-personal.pub";
-    source = ./../keys/github-personal.pub;
-  };
-
-  home.file."ssh-key-link-school" = {
-    target = ".ssh/github-school.pub";
-    source = ./../keys/github-school.pub;
-  };
-
-  # Other home-manager configurations...
 }
