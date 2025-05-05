@@ -7,25 +7,25 @@
   # Enable the X11 windowing system
   services.xserver = {
     enable = true;
-    
+
     displayManager = {
       gdm = {
         enable = true;
         wayland = true;
       };
-      
-      
+
+
     };
-    
+
     # Desktop environment
     desktopManager = {
       gnome.enable = true;
     };
-    
+
     # Configure keyboard
     xkb = {
-        layout = "de";
-        variant = "";
+      layout = "de";
+      variant = "";
     };
   };
 
@@ -41,22 +41,35 @@
     MOZ_ENABLE_WAYLAND = 1;
   };
 
-   environment.gnome.excludePackages = with pkgs; [
-    cheese      # photo booth
-    eog         # image viewer
-    epiphany    # web browser
-    gedit       # text editor
+  environment.gnome.excludePackages = with pkgs; [
+    cheese # photo booth
+    eog # image viewer
+    epiphany # web browser
+    gedit # text editor
     simple-scan # document scanner
-    totem       # video player
-    yelp        # help viewer
-    evince      # document viewer
+    totem # video player
+    yelp # help viewer
+    evince # document viewer
     file-roller # archive manager
-    geary       # email client
-    seahorse    # password manager
+    geary # email client
+    seahorse # password manager
 
     # these should be self explanatory
-    gnome-calculator gnome-calendar gnome-characters gnome-clocks gnome-contacts
-    gnome-font-viewer gnome-logs gnome-maps gnome-music gnome-photos gnome-screenshot
-    gnome-system-monitor gnome-weather gnome-disk-utility pkgs.gnome-connections gnome-tour
+    gnome-calculator
+    gnome-calendar
+    gnome-characters
+    gnome-clocks
+    gnome-contacts
+    gnome-font-viewer
+    gnome-logs
+    gnome-maps
+    gnome-music
+    gnome-photos
+    gnome-screenshot
+    gnome-system-monitor
+    gnome-weather
+    gnome-disk-utility
+    pkgs.gnome-connections
+    gnome-tour
   ];
 }

@@ -12,7 +12,7 @@
       # allowedTCPPorts = [ 80 443 ];
       # allowedUDPPorts = [ 53 ];
     };
-    
+
     nameservers = [ "1.1.1.1" "8.8.8.8" ];
   };
 
@@ -24,7 +24,7 @@
   #     PermitRootLogin = "no";
   #   };
   # };
-  
+
   # Enable TimeSync
   services.timesyncd.enable = true;
 }

@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
 
       ../common/core
@@ -29,7 +30,7 @@
   zramSwap.enable = true;
 
   # Getting Soundbar to work properly
-  hardware.enableRedistributableFirmware = true;  
+  hardware.enableRedistributableFirmware = true;
   environment.systemPackages = with pkgs; [
     alsa-ucm-conf
     pavucontrol
@@ -37,7 +38,7 @@
   ];
 
   networking.hostName = "promethea"; # Define your hostname.
-  
+
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
@@ -61,7 +62,7 @@
     package = unstable.fprintd-tod;
     tod = {
       enable = true;
-        driver = unstable.libfprint-2-tod1-goodix;
+      driver = unstable.libfprint-2-tod1-goodix;
     };
   };
 
@@ -85,8 +86,8 @@
 
       session    include                     login
       session    optional                    ${pkgs.gnome-keyring}/lib/security/pam_gnome_keyring.so auto_start
-      '';
-    };
+    '';
+  };
 
 
   virtualisation.docker.enable = true;

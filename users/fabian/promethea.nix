@@ -11,10 +11,10 @@
     # Development
     vscode
     git
-    
+
     # Browser - using unstable channel
     unstable.brave
-    
+
     # Communication
     vesktop
 

@@ -12,12 +12,12 @@
     "org.kde.kdeconnect.nonplasma" = {
       exec = "";
       name = "KDE Connect Indicator";
-      settings.NoDisplay = "false";
+      settings.NoDisplay = "true";
     };
     "org.kde.kdeconnect.app" = {
       exec = "";
       name = "KDE Connect";
-      settings.NoDisplay = "false";
+      settings.NoDisplay = "true";
     };
   };
 

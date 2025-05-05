@@ -8,7 +8,7 @@
     ./wm/gnome.nix
     ./1password.nix
   ];
-  
+
   # Common desktop packages
   environment.systemPackages = with pkgs; [
 
@@ -16,7 +16,7 @@
 
   # Enable sound with pipewire
   hardware.pulseaudio.enable = false;
-  
+
   # Enable PipeWire as the audio server
   security.rtkit.enable = true;
   services.pipewire = {
@@ -28,7 +28,7 @@
     pulse.enable = true;
     jack.enable = true;
   };
-  
+
   # Enable printer support
   services.printing = {
     enable = true;
@@ -36,5 +36,5 @@
   };
   services.avahi.enable = true;
   services.avahi.nssmdns4 = true;
-  
+
 }

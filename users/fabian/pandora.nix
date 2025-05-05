@@ -11,10 +11,10 @@
     # Development
     vscode
     git
-    
+
     # Browser - using unstable channel
     unstable.brave
-    
+
     # Communication
     vesktop
 
@@ -36,7 +36,7 @@
 
     (prismlauncher.override {
       # Add binary required by some mod
-      additionalPrograms = [ffmpeg];
+      additionalPrograms = [ ffmpeg ];
 
       # Change Java runtimes available to Prism Launcher
       jdks = [

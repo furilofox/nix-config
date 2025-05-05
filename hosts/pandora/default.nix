@@ -6,7 +6,7 @@
 
 {
   imports =
-    [ 
+    [
       # Include the results of the hardware scan
       ./hardware-configuration.nix
 
@@ -57,7 +57,7 @@
   environment.sessionVariables = {
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\\\${HOME}/.steam/root/compatibilitytools.d";
   };
-  
+
 
   # System version
   system.stateVersion = "24.11";

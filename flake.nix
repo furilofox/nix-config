@@ -50,7 +50,10 @@
           }
         ];
       };
-    in {
+    in
+    {
+      formatter = forAllSystems (system: nixpkgsFor.${system}.nixpkgs-fmt);
+
       nixosConfigurations = {
 
         # Main Desktop

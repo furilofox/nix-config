@@ -11,7 +11,7 @@
     # Development
     unstable.vscode
     git
-    
+
     # Browser - using unstable channel
     unstable.brave
 
