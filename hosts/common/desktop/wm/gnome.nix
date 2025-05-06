@@ -32,14 +32,14 @@
   services.displayManager.defaultSession = "gnome";
 
   # Force Wayland for other Apps
-  environment.sessionVariables = {
-    # Force Wayland for Chromium based applications
-    NIXOS_OZONE_WL = "1";
-    # Force Wayland for vscode
-    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
-    # Force Wayland for firefox
-    MOZ_ENABLE_WAYLAND = 1;
-  };
+  # environment.sessionVariables = {
+  #   # Force Wayland for Chromium based applications
+  #   NIXOS_OZONE_WL = "1";
+  #   # Force Wayland for vscode
+  #   ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+  #   # Force Wayland for firefox
+  #   MOZ_ENABLE_WAYLAND = 1;
+  # };
 
   environment.gnome.excludePackages = with pkgs; [
     cheese # photo booth

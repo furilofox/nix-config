@@ -5,8 +5,7 @@
   # Configure Git
   programs.git = {
     enable = true;
-    userName = "Fabian";
-    userEmail = "github@furilofox.dev";
+    
 
     extraConfig = {
       gpg = {
@@ -20,6 +19,8 @@
       };
 
       user = {
+        name = "Fabian";
+        email = "github@furilofox.dev";
         signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID/OqDv8cbzLzx983fHgAupPVy15LKEmVmUR9bOc7GlU";
       };
     };
