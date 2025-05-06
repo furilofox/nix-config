@@ -6,7 +6,6 @@
   programs.git = {
     enable = true;
 
-
     extraConfig = {
       gpg = {
         format = "ssh";

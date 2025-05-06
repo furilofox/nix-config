@@ -9,6 +9,6 @@
     ./networking.nix
     ./formatting.nix
     ./locale.nix
-
+    ./1password.nix
   ];
 }
