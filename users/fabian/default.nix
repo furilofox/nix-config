@@ -17,7 +17,7 @@
   home.packages = with pkgs; [
 
     # For easy dev shells
-    devenv
+    unstable.devenv
     
   ];
 

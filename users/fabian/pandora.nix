@@ -48,6 +48,8 @@
     })
 
     gnome-tweaks
+
+    unstable.questdb
   ];
 
   # Specify State Version (match your NixOS version)
