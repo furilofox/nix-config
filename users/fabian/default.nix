@@ -14,6 +14,13 @@
   home.username = "fabian";
   home.homeDirectory = "/home/fabian";
 
+  home.packages = with pkgs; [
+
+    # For easy dev shells
+    devenv
+    
+  ];
+
   # Specify State Version (match your NixOS version)
   home.stateVersion = "24.11";
 }
