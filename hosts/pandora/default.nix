@@ -14,7 +14,7 @@
       # Import modules
       ../common/core
       ../common/desktop
-      ../common/desktop/nvidia.nix
+      # ../common/desktop/nvidia.nix
     ];
 
   # Hostname / Network
@@ -24,6 +24,16 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
+  boot.initrd.kernelModules = [ "amdgpu" ];
+
+  hardware.graphics = {
+    enable32Bit = true; # For 32 bit applications
+  };
+
+
+  hardware.opengl.extraPackages = with pkgs; [
+    rocmPackages.clr.icd
+  ];
 
   # User
   users.users.fabian = {

@@ -3,13 +3,13 @@
 {
   programs.hyprland = {
     enable = true;
-    nvidiaPatches = true;
+    # nvidiaPatches = true;
     xwayland.enable = true;
   };
 
   hardware = {
     opengl.enable = true;
-    nvidia.modesetting.enable = true;
+    # nvidia.modesetting.enable = true;
   };
 
   environment.sessionVariables = {

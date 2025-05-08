@@ -5,12 +5,12 @@
     unstable._1password-cli
     unstable._1password-gui
   ];
-  
+
   programs = {
     _1password = {
       enable = true;
     };
-    
+
     _1password-gui = {
       enable = true;
       polkitPolicyOwners = [ "fabian" ];

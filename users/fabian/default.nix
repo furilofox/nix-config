@@ -18,7 +18,7 @@
 
     # For easy dev shells
     unstable.devenv
-    
+
   ];
 
   # Specify State Version (match your NixOS version)
