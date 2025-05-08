@@ -24,17 +24,26 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
+  boot.kernelPackages = unstable.linuxPackages_latest;
   boot.initrd.kernelModules = [ "amdgpu" ];
-
-  hardware.graphics = {
-    enable32Bit = true; # For 32 bit applications
-  };
-
-
-  hardware.opengl.extraPackages = with pkgs; [
-    rocmPackages.clr.icd
+  boot.kernelParams = [
+    "video=HDMI-1:1920x1080@60"
+    "video=DP-1:2560x1440@144"
   ];
 
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
+        unstable.amdvlk
+        unstable.rocmPackages.clr.icd
+      ];
+      extraPackages32 = with pkgs; [
+        unstable.driversi686Linux.amdvlk
+      ];
+    };
+  };
   # User
   users.users.fabian = {
     isNormalUser = true;
