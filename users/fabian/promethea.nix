@@ -19,7 +19,6 @@
     vesktop
 
     # Unsorted
-    vim
     wget
     bottles # windows app container
     mission-center # Task / System Monitor
