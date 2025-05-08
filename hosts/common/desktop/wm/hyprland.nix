@@ -10,6 +10,8 @@
   hardware = {
     opengl.enable = true;
     # nvidia.modesetting.enable = true;
+    graphics.enable = true;
+    nvidia.modesetting.enable = true;
   };
 
   environment.sessionVariables = {
@@ -17,22 +19,22 @@
     NIXOS_OZONE_WL = "1";
   };
 
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
 
-    pkgs.waybar # Top Bar
-    (pkgs.waybar.overrideAttrs (oldAttrs: {
+    waybar # Top Bar
+    (waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     })
     )
 
-    pkgs.mako
+    mako
     libnotify
 
-    pkgs.swww
+    swww
 
-    pkgs.kitty
+    kitty
 
-    pkgs.rofi-wayland
+    rofi-wayland
   ];
 
   xdg.portal.enable = true;

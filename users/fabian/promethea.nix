@@ -19,7 +19,6 @@
     vesktop
 
     # Unsorted
-    vim
     wget
     bottles # windows app container
     mission-center # Task / System Monitor
@@ -33,6 +32,8 @@
 
     gnome-tweaks
     gnome-network-displays
+
+    unstable.bruno
   ];
 
   # Specify State Version (match your NixOS version)
