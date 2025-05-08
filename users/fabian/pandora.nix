@@ -49,7 +49,8 @@
 
     gnome-tweaks
 
-    unstable.questdb
+    glmark2
+    stress
   ];
 
   # Specify State Version (match your NixOS version)
