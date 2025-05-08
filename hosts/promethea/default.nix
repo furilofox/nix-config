@@ -20,6 +20,17 @@
   boot.kernelPackages = unstable.linuxPackages_latest;
   boot.kernelParams = [ "intel_pstate=active" ];
 
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
+        intel-media-driver
+        mesa.drivers
+      ];
+    };
+  };
+
   # Virtual RAM / RAM Compression and stuff
   swapDevices = [
     { device = "/var/lib/swapfile"; size = 16 * 1024; }

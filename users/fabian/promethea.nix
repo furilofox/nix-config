@@ -32,6 +32,8 @@
 
     gnome-tweaks
     gnome-network-displays
+
+    unstable.bruno
   ];
 
   # Specify State Version (match your NixOS version)
