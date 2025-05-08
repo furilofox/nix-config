@@ -28,8 +28,10 @@
   # User
   users.users.fabian = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
+
+  virtualisation.docker.enable = true;
 
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
