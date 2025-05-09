@@ -58,6 +58,8 @@
     wget
     git
     curl
+
+    bruno
   ];
 
   # Gaming Stuff
