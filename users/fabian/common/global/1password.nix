@@ -1,4 +1,4 @@
-{ config, lib, unstable, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   onePassPath = "~/.1password/agent.sock";

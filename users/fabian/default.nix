@@ -1,6 +1,6 @@
 # User-specific configuration for home-manager
 
-{ config, pkgs, unstable, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -17,7 +17,7 @@
   home.packages = with pkgs; [
 
     # For easy dev shells
-    unstable.devenv
+    devenv
 
   ];
 

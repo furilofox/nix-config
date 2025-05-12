@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, unstable, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -17,7 +17,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = unstable.linuxPackages_latest;
+  boot.kernelPackages = linuxPackages_latest;
   boot.kernelParams = [ "intel_pstate=active" ];
 
   hardware = {
@@ -70,10 +70,10 @@
   };
   services.fprintd = {
     enable = true;
-    package = unstable.fprintd-tod;
+    package = fprintd-tod;
     tod = {
       enable = true;
-      driver = unstable.libfprint-2-tod1-goodix;
+      driver = libfprint-2-tod1-goodix;
     };
   };
 

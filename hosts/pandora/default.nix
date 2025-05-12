@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running 'nixos-help').
 
-{ config, pkgs, unstable, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -24,7 +24,7 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
-  boot.kernelPackages = unstable.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [
     "video=HDMI-1:1920x1080@60"
@@ -36,11 +36,11 @@
       enable = true;
       enable32Bit = true;
       extraPackages = with pkgs; [
-        unstable.amdvlk
-        unstable.rocmPackages.clr.icd
+        amdvlk
+        rocmPackages.clr.icd
       ];
       extraPackages32 = with pkgs; [
-        unstable.driversi686Linux.amdvlk
+        driversi686Linux.amdvlk
       ];
     };
   };

@@ -1,6 +1,6 @@
 # User-specific configuration for home-manager
 
-{ config, pkgs, unstable, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   xdg.desktopEntries = {

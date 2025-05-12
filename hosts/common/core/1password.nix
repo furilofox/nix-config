@@ -1,9 +1,9 @@
-{ config, lib, unstable, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
-    unstable._1password-cli
-    unstable._1password-gui
+    _1password-cli
+    _1password-gui
   ];
 
   programs = {
@@ -23,7 +23,7 @@
     description = "1Password GUI";
     wantedBy = [ "graphical-session.target" ];
     serviceConfig = {
-      ExecStart = "${unstable._1password-gui}/bin/1password --silent";
+      ExecStart = "${pkgs._1password-gui}/bin/1password --silent";
       Restart = "on-failure";
       TimeoutStopSec = 10;
     };
