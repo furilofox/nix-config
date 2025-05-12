@@ -60,6 +60,8 @@
     curl
 
     bruno
+
+    xdg-utils
   ];
 
   # Gaming Stuff
