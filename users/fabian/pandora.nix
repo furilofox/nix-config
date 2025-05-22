@@ -17,6 +17,7 @@
 
     # Communication
     vesktop
+    discord
 
     # Unsorted
     vim

@@ -19,6 +19,8 @@
     # For easy dev shells
     devenv
 
+    fastfetch
+
   ];
 
   # Specify State Version (match your NixOS version)

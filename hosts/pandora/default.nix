@@ -26,10 +26,6 @@
   };
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelParams = [
-    "video=HDMI-1:1920x1080@60"
-    "video=DP-1:2560x1440@144"
-  ];
 
   hardware = {
     graphics = {
@@ -60,6 +56,7 @@
     curl
 
     bruno
+    devenv
 
     xdg-utils
   ];
@@ -75,6 +72,7 @@
     remotePlay.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
     gamescopeSession.enable = true;
+    extraCompatPackages = with pkgs; [ proton-ge-bin ];
   };
 
   programs.gamemode.enable = true;
