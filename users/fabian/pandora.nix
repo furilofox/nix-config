@@ -1,6 +1,6 @@
 # User-specific configuration for home-manager
 
-{ config, pkgs, unstable, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -12,11 +12,12 @@
     vscode
     git
 
-    # Browser - using unstable channel
-    unstable.brave
+    # Browser
+    brave
 
     # Communication
     vesktop
+    discord
 
     # Unsorted
     vim

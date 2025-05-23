@@ -2,21 +2,21 @@
   description = "My NixOS Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # For Devenv Python
     nixpkgs-python = {
       url = "github:cachix/nixpkgs-python";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nixpkgs-python, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixpkgs-python, ... }@inputs:
     let
       supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
@@ -26,17 +26,11 @@
         config.allowUnfree = true;
       });
 
-      nixpkgsUnstableFor = forAllSystems (system: import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      });
-
       mkHost = { hostname, system }: nixpkgs.lib.nixosSystem {
         inherit system;
 
         specialArgs = {
           inherit inputs;
-          unstable = nixpkgsUnstableFor.${system};
         };
 
         modules = [
@@ -49,7 +43,6 @@
 
             home-manager.extraSpecialArgs = {
               inherit inputs;
-              unstable = nixpkgsUnstableFor.${system};
             };
 
             home-manager.users.fabian = import ./users/fabian/${hostname}.nix;

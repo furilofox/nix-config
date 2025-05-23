@@ -15,7 +15,7 @@
   ];
 
   # Enable sound with pipewire
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   # Enable PipeWire as the audio server
   security.rtkit.enable = true;
