@@ -34,6 +34,8 @@
     gnome-network-displays
 
     unstable.bruno
+
+    realvnc-vnc-viewer
   ];
 
   # Specify State Version (match your NixOS version)
