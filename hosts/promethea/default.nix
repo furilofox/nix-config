@@ -17,7 +17,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ "intel_pstate=active" ];
 
   hardware = {
@@ -26,7 +26,7 @@
       enable32Bit = true;
       extraPackages = with pkgs; [
         intel-media-driver
-        mesa.drivers
+        mesa
       ];
     };
   };
@@ -70,10 +70,9 @@
   };
   services.fprintd = {
     enable = true;
-    package = fprintd-tod;
     tod = {
       enable = true;
-      driver = libfprint-2-tod1-goodix;
+      driver = pkgs.libfprint-2-tod1-goodix;
     };
   };
 
