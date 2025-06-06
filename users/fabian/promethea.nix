@@ -36,6 +36,8 @@
     bruno
 
     realvnc-vnc-viewer
+
+    cheese
   ];
 
   # Specify State Version (match your NixOS version)

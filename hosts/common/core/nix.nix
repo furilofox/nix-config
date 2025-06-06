@@ -12,7 +12,7 @@
     gc = {
       automatic = true;
       dates = "daily"; # TODO: Set to weekly after im done setting everything up fully
-      options = "--delete-older-than 7d";
+      options = "--delete-older-than 10";
     };
 
     # Optimize store
