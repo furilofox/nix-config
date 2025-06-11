@@ -5,7 +5,7 @@
 
 {
   imports = [
-    ./kdeconnect.nix
+    ./gsconnect.nix
     ./git.nix
     ./1password.nix
   ];
