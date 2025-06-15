@@ -52,6 +52,9 @@
 
     glmark2
     stress
+    gnome-logs
+
+    bambu-studio
   ];
 
   # Specify State Version (match your NixOS version)
