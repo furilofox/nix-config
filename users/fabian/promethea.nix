@@ -34,7 +34,18 @@
     gnome-network-displays
 
     bruno
+
+    realvnc-vnc-viewer
+
+    cheese
   ];
+
+  # Set Right Click to be Mousepad Bottom right instead of 2 Finger Click
+  dconf.settings = {
+    "org/gnome/desktop/peripherals/touchpad" = {
+      click-method = "areas";
+    };
+  };
 
   # Specify State Version (match your NixOS version)
   home.stateVersion = "24.11";
