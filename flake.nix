@@ -2,8 +2,8 @@
   description = "My NixOS Configuration";
 
   inputs = {
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,7 +18,7 @@
 
   outputs = { self, nixpkgs, home-manager, nixpkgs-python, ... }@inputs:
     let
-      supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
+      supportedSystems = [ "x86_64-linux" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 
       nixpkgsFor = forAllSystems (system: import nixpkgs {
@@ -66,12 +66,6 @@
           hostname = "promethea";
           system = "x86_64-linux";
         };
-
-        # Example for future host
-        # myserver = mkHost {
-        #   hostname = "myserver";
-        #   system = "x86_64-linux";
-        # };
       };
     };
 }
