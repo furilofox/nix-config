@@ -6,14 +6,7 @@
 {
   nix = {
     # Enable flakes and new 'nix' command
-    package = pkgs.nixVersions.stable;
-
-    # Garbage collection settings
-    gc = {
-      automatic = true;
-      dates = "daily"; # TODO: Set to weekly after im done setting everything up fully
-      options = "--delete-older-than 10";
-    };
+    package = pkgs.nixVersions.latest;
 
     # Optimize store
     settings = {
@@ -25,6 +18,15 @@
       ];
       trusted-users = [ "root" "@wheel" ];
     };
+  };
+
+  # NH for better Nix Commands
+  # Auto Garbage Collection
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 14d --keep 5";
+    flake = "/home/fabian/Documents/nix-config";
   };
 
   # Allow unfree packages
