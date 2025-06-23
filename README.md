@@ -11,3 +11,16 @@ CLI Commands using **nh**
 `nix flake update` Update System known Version
 
 `nh clean --keep 5 --keep-since 5d` Garbage collection (Optional: Keep x Generations, Keep since x Time)
+
+# Systems
+### Pandora
+Main Desktop System
+- GPU: AMD Radeon RX 9070XT
+- CPU: AMD Ryzen 9 5900X
+- RAM: 32 GB DRR4
+
+### Promethea
+Laptop System for School / Remote Work
+- GPU: Integrated Graphics (Meteor Lake-P Intel Arc Graphics)
+- CPU: Intel Core Ultra 7 155H
+- RAM: 16 GB DDR5
