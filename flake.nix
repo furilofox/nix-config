@@ -67,12 +67,6 @@
           system = "x86_64-linux";
         };
 
-        # Test VM
-        gehenna = mkHost {
-          hostname = "gehenna";
-          system = "x86_64-linux";
-        };
-
         # Example for future host
         # myserver = mkHost {
         #   hostname = "myserver";
