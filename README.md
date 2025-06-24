@@ -3,6 +3,9 @@ My Modular NixOS Config, uses **Flakes** and **Homemanager** on **Latest / Unsta
 
 CLI Commands using **nh**
 
+Possible Rewrite / Additions:
+- https://github.com/anotherhadi/nixy/tree/main
+
 # Commands
 `nh os switch . --upgrade` Rebuild System and apply Changes (Optional: Upgrade System)
 
@@ -23,4 +26,15 @@ Main Desktop System
 Laptop System for School / Remote Work
 - GPU: Integrated Graphics (Meteor Lake-P Intel Arc Graphics)
 - CPU: Intel Core Ultra 7 155H
-- RAM: 16 GB DDR5
+- RAM: 16 GB DDR5#
+
+# Design
+
+### Ricing Inspirations
+
+- https://www.reddit.com/r/unixporn/comments/1l5ll27/hyprland_i_3_quickshell/
+  https://github.com/caelestia-dots/shell
+- https://end-4.github.io/dots-hyprland-wiki/en/general/showcase/
+
+### Wallpaper Sources
+- https://github.com/anotherhadi/awesome-wallpapers

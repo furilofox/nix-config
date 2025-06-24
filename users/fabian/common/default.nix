@@ -5,7 +5,7 @@
 {
   imports = [
     ./global
-    ./programs/hyprland
+    # ./programs/hyprland
   ];
 
   # Let Home Manager install and manage itself
