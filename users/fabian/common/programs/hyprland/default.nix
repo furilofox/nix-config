@@ -8,6 +8,10 @@ let
   '';
 in
 {
+  imports = [
+    ./environment.nix
+  ];
+
   wayland.windowManager.hyprland = {
 
     enable = true;
@@ -204,7 +208,7 @@ in
 
       # https://wiki.hyprland.org/Configuring/Variables/#input
       input {
-          kb_layout = us
+          kb_layout = de
           kb_variant =
           kb_model =
           kb_options =
@@ -327,5 +331,5 @@ in
       exec-once=bash ~/.config/hypr/start.sh
 
     '';
-    };
-  }
+  };
+}

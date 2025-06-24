@@ -4,7 +4,8 @@
 
 {
   imports = [
-    ./common/global
+    ./global
+    ./programs/hyprland
   ];
 
   # Let Home Manager install and manage itself
@@ -21,6 +22,10 @@
 
     fastfetch
 
+    kdePackages.dolphin # File Manager
+    kdePackages.qtsvg # To support svg icons
+    kdePackages.kio-fuse # To mount remote filesystems via FUSE
+    kdePackages.kio-extras # Extra protocols support (sftp, fish and more)
   ];
 
   # Specify State Version (match your NixOS version)
