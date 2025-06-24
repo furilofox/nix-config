@@ -8,5 +8,6 @@
     ./gsconnect.nix
     ./git.nix
     ./1password.nix
+    ./hyprland.nix
   ];
 }
