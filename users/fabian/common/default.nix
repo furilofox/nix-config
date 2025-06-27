@@ -1,6 +1,6 @@
 # User-specific configuration for home-manager
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, pkgs-stable, lib, ... }:
 
 {
   imports = [
@@ -15,18 +15,22 @@
   home.username = "fabian";
   home.homeDirectory = "/home/fabian";
 
-  home.packages = with pkgs; [
-
-    # For easy dev shells
-    devenv
-
+  home.packages = (with pkgs; [
     fastfetch
 
     kdePackages.dolphin # File Manager
     kdePackages.qtsvg # To support svg icons
     kdePackages.kio-fuse # To mount remote filesystems via FUSE
     kdePackages.kio-extras # Extra protocols support (sftp, fish and more)
-  ];
+  ])
+
+  ++
+
+  (with pkgs-stable; [
+
+    # For easy dev shells
+    devenv # Broken on Unstable rn
+  ]);
 
   # Specify State Version (match your NixOS version)
   home.stateVersion = "24.11";

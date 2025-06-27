@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running 'nixos-help').
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, pkgs-stable, lib, ... }:
 
 {
   imports =
@@ -49,17 +49,22 @@
   virtualisation.docker.enable = true;
 
   # List packages installed in system profile
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     vim
     wget
     git
     curl
 
     bruno
-    devenv
 
     xdg-utils
-  ];
+  ])
+
+  ++
+
+  (with pkgs-stable; [
+    devenv # Broken on Unstable rn
+  ]);
 
   # Gaming Stuff
   programs.gamescope = {
