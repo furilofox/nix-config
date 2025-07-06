@@ -5,9 +5,18 @@
 
 {
   # Enable the X11 windowing system
-  services.xserver = {
-    enable = true;
-    videoDrivers = [ "amdgpu" ];
+  services = {
+
+    xserver = {
+      enable = true;
+      videoDrivers = [ "amdgpu" ];
+
+      # Configure keyboard
+      xkb = {
+        layout = "de";
+        variant = "";
+      };
+    };
 
     displayManager = {
       gdm = {
@@ -21,11 +30,7 @@
       gnome.enable = true;
     };
 
-    # Configure keyboard
-    xkb = {
-      layout = "de";
-      variant = "";
-    };
+
   };
 
   services.displayManager.defaultSession = "gnome";

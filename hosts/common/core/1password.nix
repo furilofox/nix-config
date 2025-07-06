@@ -31,11 +31,11 @@
 
   # Allow Communication with Zen Browser
   environment.etc = {
-      "1password/custom_allowed_browsers" = {
-        text = ''
-          .zen-wrapped
-        '';
-        mode = "0755";
-      };
+    "1password/custom_allowed_browsers" = {
+      text = ''
+        .zen-wrapped
+      '';
+      mode = "0755";
     };
+  };
 }

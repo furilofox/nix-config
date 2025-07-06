@@ -6,7 +6,6 @@
 {
   imports = [
     ./wm/gnome.nix
-    ./wm/hyprland.nix
   ];
 
   # Common desktop packages
