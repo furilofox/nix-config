@@ -1,6 +1,6 @@
 # User-specific configuration for home-manager
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   imports = [
@@ -13,7 +13,7 @@
     git
 
     # Browser
-    brave
+    inputs.zen-browser.packages."${system}".specific
 
     # Communication
     vesktop
@@ -58,5 +58,5 @@
   ];
 
   # Specify State Version (match your NixOS version)
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
 }

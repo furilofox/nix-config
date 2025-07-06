@@ -31,7 +31,4 @@
     # For easy dev shells
     devenv # Broken on Unstable rn
   ]);
-
-  # Specify State Version (match your NixOS version)
-  home.stateVersion = "24.11";
 }
