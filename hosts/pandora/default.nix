@@ -12,9 +12,7 @@
 
 
       # Import modules
-      ../common/core
-      ../common/desktop
-      # ../common/desktop/nvidia.nix
+      ../common
     ];
 
   # Hostname / Network

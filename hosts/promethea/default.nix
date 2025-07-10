@@ -10,8 +10,7 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
 
-      ../common/core
-      ../common/desktop
+      ../common
     ];
 
   # Bootloader.
@@ -40,14 +39,6 @@
   };
   zramSwap.enable = true;
 
-  # Getting Soundbar to work properly
-  hardware.enableRedistributableFirmware = true;
-  environment.systemPackages = with pkgs; [
-    alsa-ucm-conf
-    pavucontrol
-    alsa-utils.out
-  ];
-
   networking.hostName = "promethea"; # Define your hostname.
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -57,13 +48,10 @@
   users.users.fabian = {
     isNormalUser = true;
     description = "Fabian";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  # Gnome Network Display
-  networking.firewall.allowedTCPPorts = [ 7236 7250 ];
-  networking.firewall.allowedUDPPorts = [ 7236 5353 ];
-
+  # Fingerprint Support
   systemd.services.fprintd = {
     wantedBy = [ "multi-user.target" ];
     serviceConfig.Type = "simple";
@@ -99,39 +87,6 @@
     '';
   };
 
-
-  virtualisation.docker.enable = true;
-
-  # Gaming Stuff
-  programs.gamescope = {
-    enable = true;
-    capSysNice = true;
-  };
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-    gamescopeSession.enable = true;
-  };
-
-  programs.gamemode.enable = true;
-
-  environment.sessionVariables = {
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\\\${HOME}/.steam/root/compatibilitytools.d";
-  };
-
-  networking.firewall = {
-    allowedTCPPortRanges = [{ from = 1714; to = 1764; }];
-    allowedUDPPortRanges = [{ from = 1714; to = 1764; }];
-  };
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
 
 }

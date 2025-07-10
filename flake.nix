@@ -3,23 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # For Devenv Python
-    nixpkgs-python = {
-      url = "github:cachix/nixpkgs-python";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixpkgs-python, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       supportedSystems = [ "x86_64-linux" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
@@ -29,18 +20,11 @@
         config.allowUnfree = true;
       });
 
-      nixpkgsStableFor = forAllSystems (system: import nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
-      });
-
       mkHost = { hostname, system }: nixpkgs.lib.nixosSystem {
         inherit system;
 
         specialArgs = {
           inherit inputs;
-          pkgs = nixpkgsFor.${system};
-          pkgs-stable = nixpkgsStableFor.${system};
         };
 
         modules = [
@@ -53,8 +37,6 @@
 
             home-manager.extraSpecialArgs = {
               inherit inputs;
-              pkgs = nixpkgsFor.${system};
-              pkgs-stable = nixpkgsStableFor.${system};
             };
 
             home-manager.users.fabian = import ./users/fabian/${hostname}.nix;

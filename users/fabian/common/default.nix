@@ -1,11 +1,18 @@
 # User-specific configuration for home-manager
 
-{ config, pkgs, pkgs-stable, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
-    ./global
-    # ./programs/hyprland
+  ];
+
+  home.packages = with pkgs; [
+    # Development
+    vscode
+    git
+
+    # Browser
+    brave
   ];
 
   # Let Home Manager install and manage itself
@@ -14,21 +21,4 @@
   # Home Manager needs a bit of information about you and the paths it should manage
   home.username = "fabian";
   home.homeDirectory = "/home/fabian";
-
-  home.packages = (with pkgs; [
-    fastfetch
-
-    kdePackages.dolphin # File Manager
-    kdePackages.qtsvg # To support svg icons
-    kdePackages.kio-fuse # To mount remote filesystems via FUSE
-    kdePackages.kio-extras # Extra protocols support (sftp, fish and more)
-  ])
-
-  ++
-
-  (with pkgs-stable; [
-
-    # For easy dev shells
-    devenv # Broken on Unstable rn
-  ]);
 }
